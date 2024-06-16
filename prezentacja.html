@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+    <title>Strona główna</title>
+
+    <style>
+
+            .prezentacja-kontener {
+            background-image: url(https://static.vecteezy.com/system/resources/thumbnails/001/984/279/small_2x/floral-background-with-cherry-blossoms-in-full-bloom-on-a-pink-background-free-vector.jpg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            height: 338px;
+            text-align: center;
+            position: relative;
+            box-sizing: border-box;
+        }
+        .slajd {
+            display: none;
+            padding: 20px;
+            
+        }
+        .slajd.aktywny {
+            display: block;
+        }
+        .nawigacja {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .nawigacja button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgb(77, 77, 77);
+            color: white;
+            cursor: pointer;
+        }
+        .nawigacja button:hover {
+            background-color: #f16067;
+        }
+         h3{
+            font-size: 20px;
+            color: white;
+            text-shadow:0 0 10px rgba(0, 0, 0, 0.1); 
+         }
+         p{
+            font-size: 20px;
+         }
+    
+        
+    </style>
+    <link rel="stylesheet" href="style/layout.css">
+    <link rel="stylesheet" href="style/menuPionowe.css">
+
+</head>
+<body>
+    <header>
+        <h1>MANGA</h1>
+    </header>
+    <nav>
+
+        <ul>
+            <li><a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+
+        </ul>
+    </nav>
+    <article>
+        <div class="prezentacja-kontener">
+            <div class="slajd aktywny">
+                <h3>Wprowadzenie do Mangi</h3>
+                <p>Manga to komiksy lub powieści graficzne pochodzące z Japonii, które zdobyły ogromną popularność na całym świecie.</p>
+            </div>
+            <div class="slajd">
+                <h3>Początki Mangi</h3>
+                <p>Pierwsze mangi pojawiły się w okresie Edo (1603-1868). Były to ilustrowane książki znane jako kibyōshi. Współczesna manga rozwijała się po II wojnie światowej, głównie dzięki pracy Osamu Tezuki, znanego jako "ojciec mangi".</p>
+            </div>
+            <div class="slajd">
+                <h3>Wzrost Popularności</h3>
+                <p>W latach 50. i 60. manga stała się niezwykle popularna w Japonii, a w latach 80. zaczęła zdobywać międzynarodową popularność. W tym czasie pojawiły się takie tytuły jak "Akira" i "Dragon Ball", które miały ogromny wpływ na kulturę popularną.</p>
+            </div>
+            <div class="slajd">
+                <h3>Gatunki Mangi</h3>
+                <p>Manga obejmuje wiele gatunków, takich jak shonen (dla chłopców), shojo (dla dziewcząt), seinen (dla dorosłych mężczyzn) i josei (dla dorosłych kobiet). Każdy z tych gatunków ma swoje unikalne cechy i typową tematykę.</p>
+            </div>
+            <div class="slajd">
+                <h3>Wpływ na Kulturę</h3>
+                <p>Manga wywarła ogromny wpływ na kulturę popularną, nie tylko w Japonii, ale na całym świecie. Adaptacje anime, filmy, gry wideo i merchandizing przyczyniły się do globalnej ekspansji mangi.</p>
+            </div>
+        </div>
+        <div class="nawigacja">
+            <button onclick="poprzedniSlajd()">Poprzedni</button>
+            <button onclick="nastepnySlajd()">Następny</button>
+        </div>
+    
+        <script>
+            let obecnySlajd = 0;
+            const slajdy = document.querySelectorAll('.slajd');
+    
+            function pokazSlajd(index) {
+                slajdy.forEach((slajd, i) => {
+                    slajd.classList.toggle('aktywny', i === index);
+                });
+            }
+    
+            function nastepnySlajd() {
+                obecnySlajd = (obecnySlajd + 1) % slajdy.length;
+                pokazSlajd(obecnySlajd);
+            }
+    
+            function poprzedniSlajd() {
+                obecnySlajd = (obecnySlajd - 1 + slajdy.length) % slajdy.length;
+                pokazSlajd(obecnySlajd);
+            }
+    
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowRight') {
+                    nastepnySlajd();
+                } else if (event.key === 'ArrowLeft') {
+                    poprzedniSlajd();
+                }
+            });
+    
+            pokazSlajd(obecnySlajd);
+        </script>
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    
+    </footer>
+  
+    
+</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona główna</title>
+
+    <style>
+        header, h2{
+            text-align: center;
+            color: rgb(255, 0, 0);
+             
+        }
+
+
+        .border{
+            border: 3px red;
+        }
+        .tekst{
+            font-size: 25px;
+        }
+        .galeria {
+
+            padding: 20px;
+            border-radius: 8px;
+
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 60vh;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .kontrolki {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgb(77, 77, 77);
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff0000;
+        }
+
+        
+    </style>
+        <link rel="stylesheet" href="style/layout.css">
+        <link rel="stylesheet" href="style/menuPionowe.css">
+    
+</head>
+<body>
+    <header>
+        
+        <h1>Galeria obrazów Bam'a</h1>
+    </header>
+    <nav>
+        
+        <ul>
+            <li><a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+        </ul>
+    </nav>
+    <article>
+        <div class="galeria">
+            <img id="galeriaObraz" src="images/bam1.jpg" alt="Galeria Obrazów">
+            <div class="kontrolki">
+                <button onclick="pierwszyObraz()">Pierwszy</button>
+                <button onclick="poprzedniObraz()">Poprzedni</button>
+                <button onclick="nastepnyObraz()">Następny</button>
+                <button onclick="ostatniObraz()">Ostatni</button>
+            </div>
+        </div>
+    
+        <script>
+            const obrazy = [
+                'images/bam1.jpg',
+                'images/bam2.jpg',
+                'images/bam3.jpg',
+                'images/bam5.jpg',
+                'images/bam6.jpg',
+                'images/bam7.jpg',
+                'images/bam8.jpg',
+                'images/bam9.jpg',
+                'images/bam10.jpg'
+
+            ];
+            let obecnyIndeks = 0;
+    
+            function aktualizujObraz() {
+                const imgElement = document.getElementById('galeriaObraz');
+                imgElement.src = obrazy[obecnyIndeks];
+            }
+    
+            function pierwszyObraz() {
+                obecnyIndeks = 0;
+                aktualizujObraz();
+            }
+    
+            function poprzedniObraz() {
+                if (obecnyIndeks > 0) {
+                    obecnyIndeks--;
+                    aktualizujObraz();
+                }
+            }
+    
+            function nastepnyObraz() {
+                if (obecnyIndeks < obrazy.length - 1) {
+                    obecnyIndeks++;
+                    aktualizujObraz();
+                }
+            }
+    
+            function ostatniObraz() {
+                obecnyIndeks = obrazy.length - 1;
+                aktualizujObraz();
+            }
+    
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'ArrowLeft') {
+                    poprzedniObraz();
+                } else if (event.key === 'ArrowRight') {
+                    nastepnyObraz();
+                }
+            });
+        </script>
+
+        
+
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    </footer>
+  
+    
+</body>
+</html>

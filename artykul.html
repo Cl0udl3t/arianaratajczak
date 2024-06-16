@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ranking</title>
+
+    <style>
+        header, h3{
+
+            text-align: center;
+            color: rgb(255, 0, 0);
+             
+        }
+        .nazwaKlasy{
+            background-color: black;
+            color: rgb(255, 255, 255);
+            
+        }
+
+        h4{
+            text-align: center;
+        }        
+
+        .border{
+            border: 3px red;
+        }
+        .tekst{
+            font-size: 25px;
+        }
+        #map {
+            position: relative;
+        }
+        .area {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .img{
+            text-align: center;
+        }
+
+        h3{
+            font-size: 19px;
+        }
+
+
+
+
+    </style>
+    <link rel="stylesheet" href="style/layout.css">
+    <link rel="stylesheet" href="style/menuPionowe.css">
+</head>
+<body>
+    <header>
+        
+        <h1>ARTYKUŁ</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+        </ul>
+    </nav>
+    <article>
+        <div class="img">
+         <h3>Top 5 najlepiej sprzedających się mang w Poslce</h3> 
+         
+
+        
+        <img src="images/naruto1.jpg" alt="Mapa z obsazrami1" usemap="#mapa1">
+        <img src="images/One-Piece-tom-01.jpg" alt="Mapa z obsazrami2" usemap="#mapa2">
+        <img src="images/atak tyanów 1.jpg" alt="Mapa z obsazrami3" usemap="#mapa3">     
+    
+
+        <map name="mapa1">
+            <area shape="rect" coords="0,0, 260,350" alt="Obszar 1" href="naruto.html">
+        </map>
+        <map name="mapa2">
+            <area shape="rect" coords="0,0, 260,350" alt="Obszar 2" href="one.html">
+        </map>
+        <map name="mapa3">
+            <area shape="rect" coords="0,0, 260,350 " alt="Obszar 3" href="tytani.html">
+        </map>
+
+         
+        </div> 
+              
+            
+          
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    </footer>
+  
+    
+</body>
+</html>

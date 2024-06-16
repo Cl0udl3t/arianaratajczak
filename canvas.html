@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANVAS</title>
+
+    <style>
+        header{
+            text-align: center;
+            color: rgb(255, 0, 0);
+             
+        }
+
+        canvas{
+            background-color: white;
+            border: 1px dotted black;
+        }
+        input{
+            font-size: 20px;
+    
+
+        }
+
+
+    </style>
+    <link rel="stylesheet" href="style/layout.css">
+    <link rel="stylesheet" href="style/menuPionowe.css">
+    <script>
+        let can, cont;
+        window.onload= function(){
+            can=document.querySelector("canvas");
+        }
+
+        function rysujLinie() {
+            if (cont==null) {
+                cont=can.getContext("2d");
+            }
+            cont.beginPath();
+            cont.strokeStyle="red";
+            cont.lineWidth=3;
+            cont.lineCap="round"; // square, butt
+            cont.moveTo(10,10);
+            cont.lineTo(can.width-10, can.height-10);
+            cont.stroke();
+
+            cont.beginPath();
+            cont.lineWidth=2;
+            cont.strokeStyle="green";
+            cont.moveTo(20,10);
+            cont.lineTo(can.width-10, can.height-20);
+            cont.stroke();
+            
+        }
+
+        function rysujKrzywa() {
+            if (cont==null) {
+                cont=can.getContext("2d");
+            }
+            cont.beginPath();
+            let x=150, y=150,r=100, katStart=0.1*Math.PI, katStop=0.9*Math.PI;
+            cont.strokeStyle="#440088";
+            cont.lineWidth=5;
+            cont.arc(x,y,r,katStart,katStop,true);
+            cont.stroke();
+
+            cont.lineWidth = 11;
+            cont.strokeStyle = "#FF3311";
+            cont.beginPath();
+            cont.moveTo(84, 169);
+            cont.bezierCurveTo(292, 83, 240, 374, 247, 104);
+            cont.stroke();
+        }
+
+        function rysujFigury() {
+            if (cont==null) {
+            cont=can.getContext("2d");
+        }
+        let podstawa=150, ramiona=100;
+        let h= Math.sqrt(Math.pow(ramiona,2) - Math.pow(podstawa/2,2));
+        cont.beginPath();
+        cont.moveTo(can.width/2 - podstawa/2, can.height/2);
+        cont.lineTo(can.width/2 + podstawa/2, can.height/2);
+        cont.lineTo(can.width/2 , can.height/2 - h);
+        cont.fillStyle="blue";
+        cont.fill();
+        cont.lineWidth=5;
+        cont.strokeStyle="pink";
+        cont.stroke();
+
+        cont.fillStyle="rgba(220,0,0,0.5)";
+        cont.fillRect(150,50,100,80);
+
+        cont.strokeStyle="rgb(150,1,5)";
+        cont.strokeRect(150,50,100,80);
+
+        cont.beginPath();
+        cont.globalAlpha=0.4;
+        cont.arc(170,150,20,0,2*Math.PI);
+        cont.strokeStyle="blue"
+        cont.fillStyle="yellow"
+        cont.fill();
+        cont.stroke();
+
+        cont.globalAlpha=1;
+        }
+
+        function rysujTekst(){
+            if (cont==null) {
+            cont=can.getContext("2d");
+        }
+            cont.font="20px Arial";
+            cont.textAlign="left";
+            cont.fillText("Być albo nie być", can.width/2,50);
+            cont.lineWidth=3;
+            cont.strokeStyle="brown";
+            cont.textAlign="center";
+            cont.strokeText("Oto jest pytanie", can.width/2, 150)
+        }
+       
+        function rysujPac() {
+            if (cont==null) {
+                cont=can.getContext("2d");
+            }
+
+            let x = can.width / 4;
+            let y = can.height / 2;
+            let promien = Math.min(can.width, can.height)/5;
+            let grd = cont.createRadialGradient(x, y, 0, x, y, promien * 2);
+            grd.addColorStop(0, 'rgb(255, 247, 0)');
+            grd.addColorStop(1, 'rgb(240, 208, 0)');
+            let kwadrat = 
+
+            cont.beginPath();
+            cont.fillStyle = grd;
+            cont.arc(x, y, promien * 2, 0.2 * Math.PI, 1.8 * Math.PI);
+            cont.lineTo(x, y);
+            cont.closePath();
+            cont.fill();
+
+            let okopro = promien / 6; 
+            let okox = promien / 3; 
+            let okoy = -can.height / 4; 
+            cont.beginPath();
+            cont.fillStyle = "black";
+            cont.arc(x + okox, y + okoy, okopro * 2, 0, 2 * Math.PI);
+            cont.fill();
+
+            let kulkax1 = x + 100; 
+            let kulkax2 = x + 150; 
+            let kulkay = y;
+            let kulkarozmiar = okopro * 2; 
+            let kulkakolor = "gold";
+
+            drawSquare(kulkax1, kulkay, kulkarozmiar, kulkakolor);
+            drawSquare(kulkax2, kulkay, kulkarozmiar, kulkakolor);
+            drawSquare(kulkax1 + 100, kulkay, kulkarozmiar, kulkakolor);
+            drawSquare(kulkax2 + 100, kulkay, kulkarozmiar, kulkakolor);
+}
+
+        function drawSquare(x, y, size, color) {
+            cont.fillStyle = "white";
+            cont.fillRect(x - size / 2, y - size / 2, size, size);
+            cont.strokeStyle = "black";
+            cont.lineWidth = 2;
+            cont.strokeRect(x - size / 2, y - size / 2, size, size);
+
+}
+
+        function pokemon(){
+            if (cont==null) {
+                cont=can.getContext("2d");
+            }
+            
+            const pixelSize = 10; 
+            const pattern = [
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                "..............................XXXX.........X.............",
+                ".............................XOOOOX.......XRX............",
+                "............................XOOOOOOX......XRRX...........",
+                "............................XOOOOOOX......XRRX...........",
+                "...........................XOOOOOOOOX....XRRRRX..........",
+                "..........................XOOOOWXOOOX....XRRYRX..........",
+                "..........................XOOOOXXOOOOX...XRYYRX..........",
+                "..........................XOOOOXXOOOOX....XYXX...........",
+                "...........................XOOOOOOOOOOX...XOX............",
+                "............................XXOOOOOOOOOX.XOOX............",
+                "..............................XXXOOXOOOXXOOX.............",
+                "...............................XYYXOOOOOXOOX.............",
+                "...............................XYYYXXOOOXOX..............",
+                "..............................XWXYYYOOOOXX...............",
+                "...............................XXXYYOOOXX................",
+                "..................................XXXOXX.................",
+                "...................................XWOWX.................",
+                "....................................XXXX.................",
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                ".........................................................",
+                "........................................................."
+                ];
+                const colors = {
+                'X': 'black',
+                'O': 'orange',
+                'Y': 'yellow',
+                'R': 'red',
+                'W': 'white',
+                '.': 'transparent'
+            };
+
+            for (let y = 0; y < pattern.length; y++) {
+                for (let x = 0; x < pattern[y].length; x++) {
+                    const color = colors[pattern[y][x]];
+                    cont.fillStyle = color;
+                    cont.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+                }
+            }
+        }
+        function pokeball(){
+            if (cont==null) {
+                cont=can.getContext("2d");
+            }
+            
+            const pixelSize = 10; 
+            const pattern = [
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "..............XXXX.................",
+                "............XXRRRRXX...............",
+                "...........XRRRRRRRRX..............",
+                "...........XRRRRRRRRX..............",
+                "..........XRRRRRRRRRRX.............",
+                "..........XRRRRXXRRRRX.............",
+                "..........XXRRXWWXRRXX.............",
+                "..........XWXXXWWXXXWX.............",
+                "...........XWWWXXWWWX..............",
+                "...........XWWWWWWWWX..............",
+                "............XXWWWWXX...............",
+                "..............XXXX.................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "...................................",
+                "..................................."
+                ];
+                const colors = {
+                'X': 'black',
+                'O': 'orange',
+                'Y': 'yellow',
+                'R': 'red',
+                'W': 'white',
+                '.': 'transparent'
+            };
+
+            for (let y = 0; y < pattern.length; y++) {
+                for (let x = 0; x < pattern[y].length; x++) {
+                    const color = colors[pattern[y][x]];
+                    cont.fillStyle = color;
+                    cont.fillRect(x * pixelSize, y * pixelSize, pixelSize, pixelSize);
+                }
+            }
+        }
+
+
+
+
+        function Gumka(){cont.clearRect(0,0,can.width, can.height);}    
+
+
+    </script>
+</head>
+<body>
+    <header>
+        <h1>CANVAS</h1>
+    </header>
+    <nav>
+        <ul>
+            <li> <a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+        </ul>
+    </nav>
+    <article>
+   
+        <input type="button" value="Rysuj linie" onclick="rysujLinie()">
+        <input type="button" value="Rysuj krzywą" onclick="rysujKrzywa()">
+        <input type="button" value="Rysuj figury" onclick="rysujFigury()">
+        <input type="button" value="Rysuj tekst" onclick="rysujTekst()">
+        <input type="button" value="Pac-Man" onclick="rysujPac()">
+        <input type="button" value="Pokemon" onclick="pokemon()"> 
+        <input type="button" value="PokeBall" onclick="pokeball()"> 
+        <input type="button" value="Gumka" onclick="Gumka()"> 
+        
+        
+
+        <canvas width="570" height="300"></canvas>
+
+   
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    </footer>
+  
+    
+</body>
+</html>

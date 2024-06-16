@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top wydawnictwa</title>
+
+    <style>
+    header{
+
+        text-align: center;
+        color: rgb(255, 0, 0);
+         
+    }
+    h3{
+        text-align: center;
+        color: rgb(255, 0, 0);
+    }
+
+    .border{
+        border: 3px red;
+    }
+    .tekst{
+        font-size: 25px;
+    }
+   
+
+    
+</style>
+    <link rel="stylesheet" href="style/layout.css">
+    <link rel="stylesheet" href="style/menuPionowe.css">
+    <link rel="stylesheet" href="style/tabela.css">
+</head>
+
+<body>
+    <header>
+        <h1>Top wydawnictwa</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+        </ul>
+    </nav>
+    <article>
+        <title>Tabela Wydawnictw Mang w Polsce</title>
+
+    </head>
+    <body>
+        <h3>Popularne Wydawnictwa Mang w Polsce</h3>
+        <table id="tabelaManga">
+
+        </table>
+    
+        <script>
+            const daneManga = [
+                { nazwa: "Waneko", rokZalozenia: "1999", seria1: "Naruto", seria2: "Tokyo Ghoul", strona: "https://www.waneko.pl" },
+                { nazwa: "J.P.F.", rokZalozenia: "1996", seria1: "One Piece", seria2: "Dragon Ball", strona: "http://jpf.com.pl" },
+                { nazwa: "Studio JG", rokZalozenia: "2006", seria1: "Sword Art Online", seria2: "No Game No Life", strona: "http://studiojg.pl" },
+                { nazwa: "Kotori", rokZalozenia: "2011", seria1: "D.Gray-man", seria2: "K-ON!", strona: "http://kotori.pl" },
+                { nazwa: "Hanami", rokZalozenia: "2006", seria1: "Pluto", seria2: "Monster", strona: "http://hanami.pl" },
+                { nazwa: "Dango", rokZalozenia: "2017", seria1: "Given", seria2: "Bungou Stray Dogs", strona: "http://dango.pl" },
+                { nazwa: "Osiem Macek", rokZalozenia: "2019", seria1: "Ten Count", seria2: "Junjou Romantica", strona: "http://osiemmacek.pl" }
+            ];
+    
+            function utworzTabele() {
+                const tabela = document.getElementById('tabelaManga');
+                tabela.innerHTML = `
+                    <tr>
+                        <th rowspan="2">Wydawnictwo</th>
+                        <th rowspan="2">Rok założenia</th>
+                        <th colspan="2">Popularne serie</th>
+                        <th rowspan="2">Strona internetowa</th>
+                    </tr>
+                    <tr>
+                        <th>Seria 1</th>
+                        <th>Seria 2</th>
+                    </tr>
+                `;
+    
+                daneManga.forEach(manga => {
+                    const wiersz = document.createElement('tr');
+                    wiersz.innerHTML = `
+                        <td>${manga.nazwa}</td>
+                        <td>${manga.rokZalozenia}</td>
+                        <td>${manga.seria1}</td>
+                        <td>${manga.seria2}</td>
+                        <td><a href="${manga.strona}" target="_blank">${manga.strona}</a></td>
+                    `;
+                    tabela.appendChild(wiersz);
+                });
+            }
+    
+            utworzTabele();
+        </script>
+    
+
+
+
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    </footer>
+  
+    
+</body>
+</html>

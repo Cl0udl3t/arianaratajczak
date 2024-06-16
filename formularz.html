@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularz</title>
+
+
+    <style>
+        header{
+
+            text-align: center;
+            color: rgb(255, 0, 0);
+             
+        }
+
+
+        h3{
+        text-align: center;
+        color: rgb(255, 0, 0);
+        }
+
+        .border{
+            border: 3px red;
+        }
+        .tekst{
+            font-size: 25px;
+        }
+
+        fieldset{
+            text-align: left;
+        }
+
+        .checkboxy{
+            display: grid;
+            
+
+        }
+        
+    </style>
+    <link rel="stylesheet" href="style/layout.css">
+    <link rel="stylesheet" href="style/menuPionowe.css">
+    <link rel="stylesheet" href="style/form.css">
+</head>
+<body>
+    <header>
+        <h1>FORMULARZ</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html"> Strona główna </a> </li>
+            <li><a href="http://www.put.poznan.pl" target="_blank">
+                Politechnika Poznańska</a></li>
+            <li><a href="artykul.html">Ranking</a></li>
+            <li><a href="tabela.html">Tabela</a></li>
+            <li><a href="formularz.html">Formularz</a></li>
+            <li><a href="JavaScript_kalkulator.html">Kalkulator średniej</a></li>
+            <li><a href="dane.html">Galeria</a></li>
+            <li><a href="canvas.html">Canvas</a></li>
+            <li><a href="prezentacja.html">Historia mangi</a></li>
+        </ul>
+    </nav>
+    <article>
+        <h3 class="tekst">Formularz o tematyce mang</h3>
+        <form action="" method="post">
+            <p>
+                Proszę wypełnić ten formularz. <br>
+                Pola oznaczone <em>*</em> są obowiązkowe!
+            </p>
+            <fieldset>
+                <div class="checkboxy">
+                <legend>Dane kontaktowe</legend>
+                <label for="imie">Imie<em>*</em> </label> <br>
+                <input type="text" name="imie" id="imie" required autofocus ><br>
+                <label for="nazw">Nazwisko<em>*</em> </label> <br>
+                <input type="text" name="nazw" id="nazw" required><br>
+                <label for="tele">Telefon<em>*</em> </label> <br>
+                <input type="tel" name="tele" id="tele" required 
+                placeholder="(+48) xxx-xxx-xxx"><br>
+                <label for="mail">Mail<em>*</em> </label> <br>
+                <input type="email" name="mail" id="mail" required 
+                placeholder="imie.nazwisko@example.com"><br>
+                </div>
+            </fieldset>
+
+            <fieldset><legend>Szczegółowe dane osobowe</legend>
+
+                <div class="checkboxy">
+                <label for="waga">Waga</label>
+                <input type="number" name="waga" id="waga" 
+                min="0" max="120" step="0.5"><br>
+                <label for="Wzrost">Wzrost (0-240)[cm]</label> 
+                <input type="range" name="Wzrost" id="Wzrost" 
+                min="0" max="240" step="40" value="180">  <br>
+
+                <label for="pleć">Płeć</label>
+                <select name="pleć" id="pleć">
+                    <option value="kobieta">Kobieta</option>
+                    <option value="mężczyzna">Mężczyzna</option>
+                    <option value="nie podaję" selected>nie podaję</option>
+                </select><br>
+                <label for="dataUr">Data urodzenia</label>
+                <input type="date" name="dataUr" id="dataUr"><br>
+                </div>
+            </fieldset>
+
+            <fieldset><legend>Jakie gatunki czytasz?</legend>
+            
+                <input type="checkbox" name="zainteresowania" id="mecha">
+                <label for="mecha">Mecha</label> <br>
+                <input type="checkbox" name="zainteresowania" id="seinen">
+                <label for="seinen">Seinen</label><br>
+                <input type="checkbox" name="zainteresowania" id="Shojo">
+                <label for="Shojo">Shojo</label><br>
+                <input type="checkbox" name="zainteresowania" id="Shonen">
+                <label for="Shonen">Shonen</label><br>
+                <input type="checkbox" name="zainteresowania" id="Kodomo">
+                <label for="Kodomo">Kodomo</label><br>
+                <input type="checkbox" name="zainteresowania" id="Josei">
+                <label for="Josei">Josei</label><br>
+            
+                
+            </fieldset>
+            <fieldset><legend>Ile rocznie czytasz mang?</legend>
+                <input type="radio" name="przed_wiek" id="" value="0-18"> 0-5 <br>
+                <input type="radio" name="przed_wiek" id="" checked> 6-15 <br>
+                <input type="radio" name="przed_wiek" id=""> 16-30 <br>
+                <input type="radio" name="przed_wiek" id=""> 31-40 <br>
+                <input type="radio" name="przed_wiek" id=""> więcej <br>
+            </fieldset>
+            <fieldset><legend>Jakiego wydawnictwa czytasz najwięcej?</legend>
+                <input type="text" list="wydawnictwo">
+                <datalist id="wydawnictwo">
+                    <option value="Waneko">Waneko</option>
+                    <option value="J.P.F.">J.P.F.</option>
+                    <option value="Studio JG">Studio JG</option>
+                    <option value="Kotori">Kotori</option>
+                    <option value="Hanami">Hanami</option>
+                    <option value="Dango">Dango</option>
+                    <option value="inne">inne</option>
+                </datalist>
+            </fieldset>
+
+            <fieldset><legend>Jak zaczołeś/łaś czytać mangi?</legend>
+                <textarea name="opinia" id="" cols="30" rows="10"
+                placeholder="wpisz odpowiedź"></textarea>
+                <br>
+                <input type="file" name="plik" id="">
+            </fieldset>
+
+            <input type="submit" value="Wyślij">
+            <input type="reset" value="Kasuj formularz">
+        </form>
+    </article>
+    <aside>
+        <iframe src="kontrolkiJS.html" frameborder="0"></iframe>
+    </aside>
+    <footer>
+        Projekt strony internetowej wykonany w ramach zaliczenia przedmiotu MO:TIiSKwE na kierunku Energetyka<hr>
+        Ariana Ratajczak <br>
+        Politechnila Poznańska<br> 
+    </footer>
+  
+    
+</body>
+</html>
